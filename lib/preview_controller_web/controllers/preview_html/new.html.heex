@@ -1,0 +1,38 @@
+<.header>
+  New environment
+  <:subtitle>Use this form to deploy a new environment.</:subtitle>
+</.header>
+
+<.simple_form :let={f} for={@conn} method="post" action={~p"/"}>
+  <.list>
+    <:item title="Name">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        required={true}
+        class={[
+          "block w-full rounded-lg border-zinc-300 py-[7px] px-[11px]",
+          "text-zinc-900 focus:outline-none focus:ring-4 sm:text-sm sm:leading-6",
+          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400 phx-no-feedback:focus:ring-zinc-800/5"
+        ]}/>
+      </:item>
+    <:item title="Tag">
+      <input 
+        type="text" 
+        name="tag"
+        id="tag"
+        required={true}
+        class={[
+          "block w-full rounded-lg border-zinc-300 py-[7px] px-[11px]",
+          "text-zinc-900 focus:outline-none focus:ring-4 sm:text-sm sm:leading-6",
+          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400 phx-no-feedback:focus:ring-zinc-800/5"
+        ]}/>
+    </:item>
+  </.list>
+  <:actions>
+    <.button>Deploy</.button>
+  </:actions>
+</.simple_form>
+
+<.back navigate={~p"/"}>Back to previews</.back>

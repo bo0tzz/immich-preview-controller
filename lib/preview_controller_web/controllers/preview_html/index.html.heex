@@ -1,0 +1,21 @@
+<.header>
+  Immich preview environments
+  <:actions>
+    <.link href={~p"/new"}>
+      <.button>New Preview</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="previews" rows={@previews}}>
+  <:col :let={preview} label="Name"><%= preview.name %></:col>
+  <:col :let={preview} label="Status"><%= preview.status %></:col>
+  <:col :let={preview} label="Url"><%= preview.url %></:col>
+  <:col :let={preview} label="Tag"><%= preview.tag %></:col>
+  <:action :let={preview}>
+    <.link navigate={~p"/#{preview}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={preview}>
+    <a href={"https://#{preview.url}"}>View</a>
+  </:action>
+</.table>

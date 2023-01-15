@@ -1,0 +1,58 @@
+<.header>
+  Edit Environment <%= @preview.id %>
+  <:subtitle>Use this form to change the deployed tag of an environment.</:subtitle>
+</.header>
+
+<.simple_form :let={f} for={@conn} method="put" action={~p"/#{@preview}"}>
+  <.list>
+    <:item title="Name">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        value={@preview.name}
+        disabled={true}
+        class={[
+          "bg-gray-200 block w-full rounded-lg border-zinc-300 py-[7px] px-[11px]",
+          "text-zinc-900 focus:outline-none focus:ring-4 sm:text-sm sm:leading-6",
+          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400 phx-no-feedback:focus:ring-zinc-800/5"
+        ]}/>
+      </:item>
+    <:item title="Url">
+      <input
+        type="text"
+        name="url"
+        id="url"
+        value={@preview.url}
+        disabled={true}
+        class={[
+          "bg-gray-200 block w-full rounded-lg border-zinc-300 py-[7px] px-[11px]",
+          "text-zinc-900 focus:outline-none focus:ring-4 sm:text-sm sm:leading-6",
+          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400 phx-no-feedback:focus:ring-zinc-800/5"
+        ]}/>
+    </:item>
+    <:item title="Tag">
+      <input 
+        type="text" 
+        name="tag"
+        id="tag"
+        value={@preview.tag}
+        class={[
+          "block w-full rounded-lg border-zinc-300 py-[7px] px-[11px]",
+          "text-zinc-900 focus:outline-none focus:ring-4 sm:text-sm sm:leading-6",
+          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400 phx-no-feedback:focus:ring-zinc-800/5"
+        ]}/>
+    </:item>
+  </.list>
+  <:actions>
+    <.button>Deploy</.button>
+    <%= button "Delete",
+      to: ~p"/#{@preview.id}", 
+      method: :delete,
+      data: [confirm: "Are you sure you want to delete the environment #{@preview.name}?"],
+      class: "phx-submit-loading:opacity-75 rounded-lg bg-red-600 hover:bg-red-800 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80"
+    %>
+  </:actions>
+</.simple_form>
+
+<.back navigate={~p"/"}>Back to list</.back>
