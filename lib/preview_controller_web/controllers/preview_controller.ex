@@ -18,7 +18,7 @@ defmodule PreviewControllerWeb.PreviewController do
       id: name,
       name: name,
       tag: tag,
-      url: "#{name}.preview.immich.cloud"
+      url: "#{name}.preview.immich.app"
     }
 
     conn =
